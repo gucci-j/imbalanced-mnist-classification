@@ -63,10 +63,14 @@ if args["save_model"] is True:
 
 
 def train():
+    logger.info("***** Setup *****")
+    logger.info(f"Configs: {args}")
     pass
 
 
 def test():
+    logger.info("***** Setup *****")
+    logger.info(f"Configs: {args}")
     pass
 
 
@@ -83,6 +87,8 @@ def test_run():
 
 
 def random():
+    logger.info("***** Setup *****")
+    logger.info(f"Configs: {args}")
     pass
 
 
