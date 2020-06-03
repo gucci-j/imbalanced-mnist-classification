@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2018 Bjarte Mehus Sunde & 2019 Atsuki Yamaguchi
+Copyright (c) 2018 Bjarte Mehus Sunde & 2019-2020 Atsuki Yamaguchi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,12 @@ import torch
 
 class EarlyStopping:
     """Early stops the training if validation loss doesn't improve after a given patience."""
-    def __init__(self, patience=7, verbose=False):
+    def __init__(self, logger, patience=7, verbose=False):
         """
         Args:
-            patience (int): How long to wait after last time validation loss improved.
+            `patience` (int): How long to wait after last time validation loss improved.
                             Default: 7
-            verbose (bool): If True, prints a message for each validation loss improvement. 
+            `verbose` (bool): If True, prints a message for each validation loss improvement. 
                             Default: False
         """
         self.patience = patience
@@ -41,26 +41,26 @@ class EarlyStopping:
         self.best_score = None
         self.early_stop = False
         self.val_loss_min = np.Inf
+        self.logger = logger
 
-    def __call__(self, val_loss, logger):
+    def __call__(self, val_loss):
 
         score = -val_loss
 
         if self.best_score is None:
             self.best_score = score
-            self.save_checkpoint(val_loss, logger)
+            self.show_checkpoint(val_loss)
         elif score < self.best_score:
             self.counter += 1
-            logger.info(f'  EarlyStopping counter: {self.counter} / {self.patience}')
+            self.logger.info(f'  EarlyStopping counter: {self.counter} / {self.patience}')
             if self.counter >= self.patience:
                 self.early_stop = True
         else:
             self.best_score = score
-            self.save_checkpoint(val_loss, logger)
+            self.show_checkpoint(val_loss)
             self.counter = 0
 
-    def save_checkpoint(self, val_loss, logger):
-        '''Saves model when validation loss decrease.'''
+    def show_checkpoint(self, val_loss):
         if self.verbose:
-            logger.info(f'  Validation loss decreased: {self.val_loss_min:.6f} --> {val_loss:.6f}')
+            self.logger.info(f'  Validation loss decreased: {self.val_loss_min:.6f} --> {val_loss:.6f}')
         self.val_loss_min = val_loss

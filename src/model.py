@@ -26,6 +26,7 @@ class Model(nn.Module):
         Returns:
             output: (batch_size, 1)
         """
+
         out1 = self.drop1(F.relu(self.dense1(x)))
         out2 = self.drop2(F.relu(self.dense2(out1)))
         output = self.dense3(out2)
