@@ -52,7 +52,7 @@ class EarlyStopping:
             self.show_checkpoint(val_loss)
         elif score < self.best_score:
             self.counter += 1
-            self.logger.info(f'  EarlyStopping counter: {self.counter} / {self.patience}')
+            self.logger.info(f'\tEarlyStopping counter: {self.counter} / {self.patience}')
             if self.counter >= self.patience:
                 self.early_stop = True
         else:
@@ -62,5 +62,5 @@ class EarlyStopping:
 
     def show_checkpoint(self, val_loss):
         if self.verbose:
-            self.logger.info(f'  Validation loss decreased: {self.val_loss_min:.6f} --> {val_loss:.6f}')
+            self.logger.info(f'\tValidation loss decreased: {self.val_loss_min:.6f} --> {val_loss:.6f}')
         self.val_loss_min = val_loss

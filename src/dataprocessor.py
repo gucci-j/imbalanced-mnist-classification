@@ -10,10 +10,15 @@ class DataProcessor(object):
         pass
         
 
-    def get_data(self, split_rate=0.2, seed=1234):
+    def get_data(self, split_rate=0.2, ratio=0.5, seed=1234):
         train_data = datasets.MNIST(root='./data', train=True, download=True)
         train_data.data = DataProcessor.convert_images(train_data.data)
         train_data.targets = DataProcessor.convert_targets(train_data.targets)
+
+        # filter some data labelled as even
+        indices = DataProcessor.filter_data(train_data.targets, ratio)
+        train_data.data = train_data.data[indices]
+        train_data.targets = train_data.targets[indices]
 
         # split data into train & validation set
         targets = train_data.targets
@@ -21,15 +26,25 @@ class DataProcessor(object):
         train_set = TensorDataset(train_data.data[train_indices], train_data.targets[train_indices])
         val_set = TensorDataset(train_data.data[val_indices], train_data.targets[val_indices])
 
-        return train_set, val_set
+        # compute a poitive weight
+        num_pos = (train_data.targets[train_indices] == 1.).sum(axis=0).item()
+        pos_weight = (train_data.targets[train_indices].size()[0] - num_pos) / num_pos
+
+        return train_set, val_set, pos_weight
 
 
-    def get_test_data(self):
+    def get_test_data(self, ratio=0.5):
         test_data = datasets.MNIST(root='./data', train=False, download=True)
-        train_data.data = DataProcessor.convert_images(test_data.data)
+        test_data.data = DataProcessor.convert_images(test_data.data)
         test_data.targets = DataProcessor.convert_targets(test_data.targets)
 
-        return test_data
+        # filter some data labelled as even
+        indices = DataProcessor.filter_data(test_data.targets, ratio)
+        test_data.data = test_data.data[indices]
+        test_data.targets = test_data.targets[indices]
+        test_set = TensorDataset(test_data.data, test_data.targets)
+
+        return test_set
     
 
     @staticmethod
@@ -57,8 +72,31 @@ class DataProcessor(object):
         # => torch.Size([30508, 1]) torch.Size([29492, 1])
 
         return new_targets
+    
+
+    @staticmethod
+    def filter_data(targets, ratio):
+        """Filter some data labelled as even to make the dataset imbalanced.
+        Args:
+            targets (array): Labels
+            ratio (float): What percentage of data do you want to preserve?
+
+        Returns:
+            indices (array): Filtered labels
+        """
+        # create a dict
+        temp_index2index = {}
+        for temp_index, index in enumerate(torch.where(targets == 1.)[0]):
+            temp_index2index[temp_index] = index.numpy()
+        # select indices 
+        temp_indices = np.random.choice(len(temp_index2index), np.around(len(temp_index2index) * ratio).astype(int), replace=False)
+        indices = np.array([temp_index2index[temp_index] for temp_index in temp_indices])
+        indices = np.append(indices, torch.where(targets == 0.)[0].numpy())
+        
+        return indices
 
 
 if __name__ == '__main__':
     dataloader = DataProcessor()
-    dataloader.get_data()
+    # dataloader.get_data()
+    dataloader.get_test_data

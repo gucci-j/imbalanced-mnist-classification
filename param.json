@@ -2,15 +2,15 @@
     "mode": "train",
     "seed": 1234,
     "batch_size": 32,
-    "epochs": 1,
+    "epochs": 10,
     "hidden_dim": 256,
     "drop_rate": 0.4,
-    "patience": 1,
+    "patience": 2,
     "loss_correction": false,
     "gpu": false,
     "gpu_number": null,
     "save_model": false,
     "weight_name": null,
     "split_rate": 0.2,
-    "data_ratio": 1.0
+    "data_ratio": 0.05
 }

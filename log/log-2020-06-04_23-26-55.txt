@@ -1,0 +1,23 @@
+06/04/2020 23:26:55 - INFO - __main__ -   ***** Setup *****
+06/04/2020 23:26:55 - INFO - __main__ -   Configs: {'mode': 'train', 'seed': 1234, 'batch_size': 32, 'epochs': 10, 'hidden_dim': 256, 'drop_rate': 0.4, 'patience': 2, 'loss_correction': True, 'gpu': False, 'gpu_number': None, 'save_model': True, 'weight_name': None, 'split_rate': 0.2, 'data_ratio': 0.05}
+06/04/2020 23:26:56 - INFO - __main__ -   Number of training samples: 25586
+06/04/2020 23:26:56 - INFO - __main__ -   Number of validation samples: 6397
+06/04/2020 23:26:56 - INFO - __main__ -   ***** Training *****
+06/04/2020 23:26:58 - INFO - __main__ -   | Epoch: 01 | Train Loss: 0.623 | Train Acc: 86.732% |
+06/04/2020 23:26:59 - INFO - __main__ -   | Val. Loss: 0.334 | Val. Acc: 95.609% |
+06/04/2020 23:26:59 - INFO - __main__ -   	Validation loss decreased: inf --> 0.333829
+06/04/2020 23:27:02 - INFO - __main__ -   | Epoch: 02 | Train Loss: 0.339 | Train Acc: 93.713% |
+06/04/2020 23:27:02 - INFO - __main__ -   | Val. Loss: 0.223 | Val. Acc: 95.828% |
+06/04/2020 23:27:02 - INFO - __main__ -   	Validation loss decreased: 0.333829 --> 0.222545
+06/04/2020 23:27:05 - INFO - __main__ -   | Epoch: 03 | Train Loss: 0.245 | Train Acc: 95.266% |
+06/04/2020 23:27:05 - INFO - __main__ -   | Val. Loss: 0.183 | Val. Acc: 97.186% |
+06/04/2020 23:27:05 - INFO - __main__ -   	Validation loss decreased: 0.222545 --> 0.182845
+06/04/2020 23:27:09 - INFO - __main__ -   | Epoch: 04 | Train Loss: 0.207 | Train Acc: 95.934% |
+06/04/2020 23:27:09 - INFO - __main__ -   | Val. Loss: 0.210 | Val. Acc: 98.297% |
+06/04/2020 23:27:09 - INFO - __main__ -   	EarlyStopping counter: 1 / 2
+06/04/2020 23:27:12 - INFO - __main__ -   | Epoch: 05 | Train Loss: 0.171 | Train Acc: 96.661% |
+06/04/2020 23:27:12 - INFO - __main__ -   | Val. Loss: 0.210 | Val. Acc: 97.766% |
+06/04/2020 23:27:12 - INFO - __main__ -   	EarlyStopping counter: 2 / 2
+06/04/2020 23:27:12 - INFO - __main__ -   	Early stopping at 05
+06/04/2020 23:27:12 - INFO - __main__ -   ***** Evaluation *****
+06/04/2020 23:27:14 - INFO - __main__ -   | Val. AUC: 0.993 | Val. AP: 0.937 | Val. EER: 0.032 | Val. Precision: 0.685 |  Val. Recall: 0.953 | Val. F1: 0.797 |
