@@ -1,8 +1,0 @@
-06/04/2020 23:29:00 - INFO - __main__ -   ***** Setup *****
-06/04/2020 23:29:00 - INFO - __main__ -   Configs: {'mode': 'random', 'seed': 1234, 'batch_size': 32, 'epochs': 10, 'hidden_dim': 256, 'drop_rate': 0.4, 'patience': 2, 'loss_correction': False, 'gpu': False, 'gpu_number': None, 'save_model': True, 'weight_name': None, 'split_rate': 0.2, 'data_ratio': 0.05}
-06/04/2020 23:29:01 - INFO - __main__ -   Number of training samples: 25586
-06/04/2020 23:29:01 - INFO - __main__ -   Number of validation samples: 6397
-06/04/2020 23:29:01 - INFO - __main__ -   Number of testing samples: 5320
-06/04/2020 23:29:01 - INFO - __main__ -   ***** Testing *****
-06/04/2020 23:29:04 - INFO - __main__ -   | Val. Accuracy: 0.909 | Val. AUC: 0.486 | Val. AP: 0.046 | Val. EER: 0.048 | Val. Precision: 0.020 |  Val. Recall: 0.020 | Val. F1: 0.020 |
-06/04/2020 23:29:04 - INFO - __main__ -   | Test Accuracy: 0.909 | Test AUC: 0.486 | Test AP: 0.046 | Test EER: 0.048 | Test Precision: 0.020 |  Test Recall: 0.020 | Test F1: 0.020 |

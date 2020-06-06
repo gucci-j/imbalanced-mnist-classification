@@ -82,8 +82,8 @@ def draw_prc(preds: np.array, y: np.array, run_start_time: str) -> float:
     return ap
 
 
-def draw_det(preds: np.array, y: np.array, run_start_time: str) -> float:
-    thresh_list = np.arange(0.01, 1.0, 0.01)
+def draw_det(preds: np.array, y: np.array, run_start_time: str, scale='log') -> float:
+    thresh_list = np.arange(0.001, 1.0, 0.001)
     fpr_list = []
     fnr_list = []
 
@@ -93,13 +93,16 @@ def draw_det(preds: np.array, y: np.array, run_start_time: str) -> float:
         fpr_list.append(fp / (tn + fp))
         fnr_list.append(fn / (tp + fn))
     
-    eer = estimate_eer(fpr_list, fnr_list)
+    eer, index = estimate_eer(fpr_list, fnr_list)
 
     plt.figure()
     plt.plot(fpr_list, fnr_list)
     plt.plot(eer, eer, color="red", marker="x")
+    if scale == 'log':
+        plt.xscale('log')
+        plt.yscale('log')
     plt.grid(True)
-    plt.title(f"DET Curve (EER={eer:.3f}")
+    plt.title(f"DET Curve (EER={eer:.3f} Thresh={thresh_list[index]:.3f})")
     plt.xlabel("False Positive Rate")
     plt.ylabel("False Negative Rate")
     plt.savefig('./fig/{}/det.png'.format(run_start_time), bbox_inches="tight", pad_inches=0.1)
@@ -109,14 +112,17 @@ def draw_det(preds: np.array, y: np.array, run_start_time: str) -> float:
 
 def estimate_eer(fpr_list: list, fnr_list: list) -> float:
     best_diff = None
+    best_index = None
     eer = None
-    for fpr, fnr in zip(fpr_list, fnr_list):
+    for index, (fpr, fnr) in enumerate(zip(fpr_list, fnr_list)):
         diff = abs(fpr - fnr)
         if best_diff is None: # init
             best_diff = diff
+            best_index = index
             eer = fpr
         elif diff < best_diff: # update
             best_diff = diff
+            best_index = index
             eer = fpr
     
-    return eer
+    return eer, best_index

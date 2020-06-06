@@ -1,0 +1,29 @@
+06/06/2020 16:07:26 - INFO - __main__ -   ***** Setup *****
+06/06/2020 16:07:26 - INFO - __main__ -   Configs: {'mode': 'train', 'seed': 1234, 'batch_size': 32, 'epochs': 10, 'hidden_dim': 256, 'drop_rate': 0.4, 'patience': 2, 'loss_correction': False, 'gpu': False, 'gpu_number': None, 'save_model': True, 'weight_name': None, 'split_rate': 0.2, 'data_ratio': 1.0}
+06/06/2020 16:07:27 - INFO - __main__ -   Number of training samples: 48000
+06/06/2020 16:07:27 - INFO - __main__ -   Number of validation samples: 12000
+06/06/2020 16:07:27 - INFO - __main__ -   ***** Training *****
+06/06/2020 16:07:33 - INFO - __main__ -   | Epoch: 01 | Train Loss: 0.145 | Train Acc: 94.592% |
+06/06/2020 16:07:33 - INFO - __main__ -   | Val. Loss: 0.079 | Val. Acc: 97.375% |
+06/06/2020 16:07:33 - INFO - __main__ -   	Validation loss decreased: inf --> 0.078921
+06/06/2020 16:07:40 - INFO - __main__ -   | Epoch: 02 | Train Loss: 0.076 | Train Acc: 97.377% |
+06/06/2020 16:07:40 - INFO - __main__ -   | Val. Loss: 0.063 | Val. Acc: 98.008% |
+06/06/2020 16:07:40 - INFO - __main__ -   	Validation loss decreased: 0.078921 --> 0.062663
+06/06/2020 16:07:47 - INFO - __main__ -   | Epoch: 03 | Train Loss: 0.062 | Train Acc: 97.773% |
+06/06/2020 16:07:47 - INFO - __main__ -   | Val. Loss: 0.063 | Val. Acc: 97.942% |
+06/06/2020 16:07:47 - INFO - __main__ -   	EarlyStopping counter: 1 / 2
+06/06/2020 16:07:54 - INFO - __main__ -   | Epoch: 04 | Train Loss: 0.054 | Train Acc: 98.106% |
+06/06/2020 16:07:54 - INFO - __main__ -   | Val. Loss: 0.057 | Val. Acc: 98.233% |
+06/06/2020 16:07:54 - INFO - __main__ -   	Validation loss decreased: 0.062663 --> 0.057153
+06/06/2020 16:08:01 - INFO - __main__ -   | Epoch: 05 | Train Loss: 0.046 | Train Acc: 98.402% |
+06/06/2020 16:08:01 - INFO - __main__ -   | Val. Loss: 0.052 | Val. Acc: 98.200% |
+06/06/2020 16:08:01 - INFO - __main__ -   	Validation loss decreased: 0.057153 --> 0.052059
+06/06/2020 16:08:08 - INFO - __main__ -   | Epoch: 06 | Train Loss: 0.042 | Train Acc: 98.552% |
+06/06/2020 16:08:09 - INFO - __main__ -   | Val. Loss: 0.054 | Val. Acc: 98.375% |
+06/06/2020 16:08:09 - INFO - __main__ -   	EarlyStopping counter: 1 / 2
+06/06/2020 16:08:16 - INFO - __main__ -   | Epoch: 07 | Train Loss: 0.038 | Train Acc: 98.698% |
+06/06/2020 16:08:16 - INFO - __main__ -   | Val. Loss: 0.058 | Val. Acc: 98.308% |
+06/06/2020 16:08:16 - INFO - __main__ -   	EarlyStopping counter: 2 / 2
+06/06/2020 16:08:16 - INFO - __main__ -   	Early stopping at 07
+06/06/2020 16:08:16 - INFO - __main__ -   ***** Evaluation *****
+06/06/2020 16:08:28 - INFO - __main__ -   | Val. AUC: 0.998 | Val. AP: 0.997 | Val. EER: 0.016 | Val. Precision: 0.986 |  Val. Recall: 0.980 | Val. F1: 0.983 |

@@ -1,5 +1,0 @@
-06/04/2020 23:30:04 - INFO - __main__ -   ***** Setup *****
-06/04/2020 23:30:04 - INFO - __main__ -   Configs: {'mode': 'test', 'seed': 1234, 'batch_size': 32, 'epochs': 10, 'hidden_dim': 256, 'drop_rate': 0.4, 'patience': 2, 'loss_correction': False, 'gpu': False, 'gpu_number': None, 'save_model': True, 'weight_name': 'weights/2020-06-04_23-26-55.pth', 'split_rate': 0.2, 'data_ratio': 0.05}
-06/04/2020 23:30:04 - INFO - __main__ -   Number of testing samples: 5320
-06/04/2020 23:30:04 - INFO - __main__ -   ***** Testing *****
-06/04/2020 23:30:05 - INFO - __main__ -   | Test Accuracy: 0.976 | Test AUC: 0.993 | Test AP: 0.927 | Test EER: 0.040 | Test Precision: 0.674 |  Test Recall: 0.943 | Test F1: 0.786 |
